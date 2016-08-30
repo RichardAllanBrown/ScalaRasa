@@ -6,8 +6,6 @@ class SyllableValidator(bannedRegex: String*) {
 
   def isValid(syllable: String) = !isNotValid(syllable)
 
-  def withAdditionalBans(regex: String*) = SyllableValidator(bannedRegex ++ regex: _*)
-
 }
 
 object SyllableValidator {
@@ -16,7 +14,7 @@ object SyllableValidator {
 
   val None = SyllableValidator()
   val NoDoubles = SyllableValidator("""(.)\1""")
-  val NoDoublesOrHardSounds = NoDoubles.withAdditionalBans("""[sʃf][sʃ]""", """[rl][rl]""")
+  val NoDoublesOrHardSounds = SyllableValidator("""(.)\1""", """[sʃf][sʃ]""", """[rl][rl]""")
 
   val standardSet = Seq(None, NoDoubles, NoDoublesOrHardSounds)
 

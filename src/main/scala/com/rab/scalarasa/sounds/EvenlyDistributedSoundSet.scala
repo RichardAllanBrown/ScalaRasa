@@ -1,16 +1,15 @@
 package com.rab.scalarasa.sounds
 
-import com.rab.scalarasa.UsesRandom
+import com.rab.scalarasa.{NamedComponent, UsesRandom}
 
 import scala.util.Random
 
-trait SoundSet {
-  val name: String
+trait SoundSet extends NamedComponent {
   val available: Iterator[String]
   def pickNext: String
 }
 
-abstract class EvenlyDistributedSoundSet(val name: String, sounds: Seq[String]) extends SoundSet with UsesRandom {
+abstract class EvenlyDistributedSoundSet(val name: String, val shortName: String, sounds: Seq[String]) extends SoundSet with UsesRandom {
 
   val available = sounds.iterator
 
@@ -18,7 +17,7 @@ abstract class EvenlyDistributedSoundSet(val name: String, sounds: Seq[String]) 
 
 }
 
-abstract class BiasDistributionSoundSet(val name: String, sounds: Seq[String]) extends SoundSet with UsesRandom {
+abstract class BiasDistributionSoundSet(val name: String, val shortName: String, sounds: Seq[String]) extends SoundSet with UsesRandom {
 
   private val baseInstances = sounds.size / 2
   private val shuffledSounds = Random.shuffle(sounds)

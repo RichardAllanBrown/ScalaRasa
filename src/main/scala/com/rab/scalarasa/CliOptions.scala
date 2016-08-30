@@ -8,6 +8,11 @@ class CliOptions(args: Seq[String]) extends ScallopConf(args) {
 
   val range = opt[SyllableCount]("syllables", 's', "Number of syllables to include in words", default = Some(VariableSyllableCount(2, 4)))
   val wordCount = opt[Int]("words", 'w', "Number of words to generate", default = Some(10))
+  val vowelSetName = opt[String]("vowelSet", 'v', s"Vowel set to use")
+  val consonantSetName = opt[String]("consonantSet", 'c', "Consonant set to use")
+  val sibilantSetName = opt[String]("sibilantSet", 'i', "Sibilant set to use")
+  val liquidSetName = opt[String]("liquidSet", 'l', "Liquid set to use")
+  val finalSetName = opt[String]("finalSet", 'f', "Final set to use")
 
   verify()
 

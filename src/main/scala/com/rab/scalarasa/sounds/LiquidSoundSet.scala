@@ -1,16 +1,16 @@
 package com.rab.scalarasa.sounds
 
-class LiquidSoundSet(name: String, sounds: Seq[String]) extends EvenlyDistributedSoundSet(name, sounds)
+class LiquidSoundSet(name: String, shortName: String, sounds: Seq[String]) extends EvenlyDistributedSoundSet(name, shortName, sounds)
 
 object LiquidSoundSet {
 
-  def apply(name: String, sounds: Seq[String]) = new LiquidSoundSet(name, sounds)
+  def apply(name: String, shortName: String, sounds: Seq[String]) = new LiquidSoundSet(name, shortName, sounds)
 
-  val Standard = LiquidSoundSet("Standard", Seq("r", "l"))
-  val OnlyR = LiquidSoundSet("Only R", Seq("r"))
-  val OnlyL = LiquidSoundSet("Only L", Seq("l"))
-  val Alternative = LiquidSoundSet("Alternative", Seq("w", "j"))
-  val Full = LiquidSoundSet("Full", Seq("r", "l", "w", "j"))
+  val Standard = LiquidSoundSet("Standard", "s", Seq("r", "l"))
+  val OnlyR = LiquidSoundSet("Only R", "r", Seq("r"))
+  val OnlyL = LiquidSoundSet("Only L", "l", Seq("l"))
+  val Alternative = LiquidSoundSet("Alternative", "a", Seq("w", "j"))
+  val Full = LiquidSoundSet("Full", "f", Seq("r", "l", "w", "j"))
 
   val standardSets = Seq(Standard, OnlyR, OnlyL, Alternative, Full)
 
