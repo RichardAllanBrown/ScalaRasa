@@ -41,10 +41,9 @@ object ScalaRasaApp extends App with UsesRandom {
     result
   }
 
-  val langGen = new Language(buildSoundGen, buildOrthography, 2, 4)
-  val wordsToGen = 10
-
-  val result = Iterator.fill(wordsToGen)(langGen.createWord()).mkString("Words generated: ", ", ", "\n")
+  val parsedArgs = new CliOptions(args)
+  val langGen = new Language(buildSoundGen, buildOrthography, parsedArgs.range())
+  val result = Iterator.fill(parsedArgs.wordCount())(langGen.createWord()).mkString("Words generated: ", ", ", "\n")
   println(result)
 
 }

@@ -10,7 +10,7 @@ class LanguageIntegrationTest extends Specification {
     "should return words of expected length with simple sets" in {
       val soundGen = new SoundGenerator(VowelSoundSet.Standard, ConsonantSoundSet.minimal, SibilantSoundSet.Standard,
         LiquidSoundSet.Standard, FinalSoundSet.Hums, SyllableStructure("CVC"), SyllableValidator.None)
-      val langGen = new Language(soundGen, ComposedOrthography(ConsonantOrthography.empty, VowelOrthography.empty), 2, 2)
+      val langGen = new Language(soundGen, ComposedOrthography(ConsonantOrthography.empty, VowelOrthography.empty), ConstantSyllableCount(2))
 
       val result = langGen.createWord()
       println(s"Word made: $result")

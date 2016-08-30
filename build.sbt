@@ -9,4 +9,7 @@ libraryDependencies ++= Seq(
   // specs 2 for tests
   "org.specs2" %% "specs2-core" % "3.8.4" % "test"
 
+  // scallop for cli parsing
+  , "org.rogach" %% "scallop" % "2.0.1"
+
 )

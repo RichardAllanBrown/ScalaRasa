@@ -4,13 +4,15 @@ import com.rab.scalarasa.orthography.Orthography
 
 import scala.util.Random
 
-class Language(soundGenerator: SoundGenerator, orthography: Orthography, minLength: Int, maxLength: Int) {
+class Language(soundGenerator: SoundGenerator, orthography: Orthography, syllableCount: SyllableCount) {
 
   def createWord(): String = capitaliseFirst(createWord(randLen))
 
   private def randLen = {
-    if (minLength == maxLength) minLength
-    else minLength + Random.nextInt(maxLength - minLength)
+    syllableCount match {
+      case ConstantSyllableCount(len) => len
+      case VariableSyllableCount(min, max) => min + Random.nextInt(max - min)
+    }
   }
 
   private def createWord(syllableCount: Int): String = {
