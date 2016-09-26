@@ -10,8 +10,4 @@ trait UsesRandom {
     values(entropy.nextInt(values.size))
   }
 
-  def pickOneNormal[T](values: Seq[T]): T = {
-    ???
-  }
-
 }
